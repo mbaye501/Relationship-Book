@@ -1,19 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//#region Imports
+//#region import react standard libs
+import React from "react";
+import { Button, Image, Stylesheet, Text, View } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
+//#endregion
+//#region import my modules
+import { globalStyles } from "./src/Styles";
+import { EntryScreen } from './src/Screens'
+//#endregion
+//#region import Navigations libs
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export default function App() {
+//#endregion
+//#endregion
+
+//#region functions definition
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+//#endregion
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <EntryScreen />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

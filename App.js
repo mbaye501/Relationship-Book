@@ -1,31 +1,46 @@
 //#region Imports
+
 //#region import react standard libs
 import React from "react";
-import { Button, Image, Stylesheet, Text, View } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
 //#endregion
+
 //#region import my modules
-import { globalStyles } from "./src/Styles";
-import { EntryScreen } from './src/Screens'
+import { colors } from './src/Styles'
+import { Incon } from './src/Components'
+import { ContactsStack, HomeStack, Menu, MessagesStack } from './src/Routes'
 //#endregion
+
 //#region import Navigations libs
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //#endregion
+
 //#endregion
 
-//#region functions definition
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-//#endregion
 
 function App() {
   return (
-    <EntryScreen />
-  );
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            return <Incon iconName={route.name} size={size} color={color} focused={focused} />
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: colors.DarkBlue,
+          inactiveTintColor: colors.DarkGray,
+        }}
+      >
+
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Messages" component={MessagesStack} />
+        <Tab.Screen name="Contacts" component={ContactsStack} />
+        <Tab.Screen name="Menu" component={Menu} />
+      </Tab.Navigator>
+    </NavigationContainer>);
 }
 
 export default App;

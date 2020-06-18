@@ -7,6 +7,8 @@ import { useFonts, Merienda_400Regular, Merienda_700Bold } from '@expo-google-fo
 import { Courgette_400Regular } from '@expo-google-fonts/courgette';
 import { KaushanScript_400Regular } from '@expo-google-fonts/kaushan-script';
 import { Tangerine_400Regular, Tangerine_700Bold } from '@expo-google-fonts/tangerine';
+import { DancingScript_400Regular, DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
+
 //#endregion
 
 //#region import my modules
@@ -25,7 +27,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
-let isSignedIn = true
+let isSignedIn = false
 
 
 function App() {
@@ -36,7 +38,9 @@ function App() {
     Courgette_400Regular,
     KaushanScript_400Regular,
     Tangerine_400Regular,
-    Tangerine_700Bold
+    Tangerine_700Bold,
+    DancingScript_400Regular,
+    DancingScript_700Bold
   });
   if (!fontsLoaded) {
     return <AppLoading />;

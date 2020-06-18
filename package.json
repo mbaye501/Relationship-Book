@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/courgette": "^0.1.0",
+    "@expo-google-fonts/dancing-script": "^0.1.0",
     "@expo-google-fonts/inter": "^0.1.0",
     "@expo-google-fonts/kaushan-script": "^0.1.0",
     "@expo-google-fonts/merienda": "^0.1.0",

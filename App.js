@@ -4,10 +4,11 @@
 import React from "react";
 import { AppLoading } from 'expo';
 import { useFonts, Merienda_400Regular, Merienda_700Bold } from '@expo-google-fonts/merienda';
-import { Courgette_400Regular } from '@expo-google-fonts/courgette';
-import { KaushanScript_400Regular } from '@expo-google-fonts/kaushan-script';
-import { Tangerine_400Regular, Tangerine_700Bold } from '@expo-google-fonts/tangerine';
-import { DancingScript_400Regular, DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
+import { Roboto_100Thin, Roboto_400Regular, Roboto_500Medium, Roboto_900Black } from '@expo-google-fonts/roboto';
+import { DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
+import { RobotoSlab_500Medium, RobotoSlab_600SemiBold, RobotoSlab_700Bold } from '@expo-google-fonts/roboto-slab';
+
+
 
 //#endregion
 
@@ -33,14 +34,18 @@ let isSignedIn = false
 function App() {
   //#region load fonts
   let [fontsLoaded] = useFonts({
-    Merienda_400Regular,
-    Merienda_700Bold,
-    Courgette_400Regular,
-    KaushanScript_400Regular,
-    Tangerine_400Regular,
-    Tangerine_700Bold,
-    DancingScript_400Regular,
-    DancingScript_700Bold
+    DancingScript_700Bold,
+
+    Roboto_100Thin,
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_900Black,
+
+    RobotoSlab_500Medium,
+    RobotoSlab_600SemiBold,
+    RobotoSlab_700Bold
+
+
   });
   if (!fontsLoaded) {
     return <AppLoading />;

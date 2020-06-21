@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { globalStyles, colors } from "../../Styles"
+import { globalStyles, colors, font } from "../../Styles"
 import { BackgroundFrame, MyCard, Spacer } from '../../Components'
 import { Avatar, Card } from 'react-native-elements';
 
@@ -53,7 +53,7 @@ function EntryScreen({ navigation }) {
 export { EntryScreen }
 
 
-const styles = {
+const styles = StyleSheet.create({
     avatarContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -85,7 +85,7 @@ const styles = {
         fontSize: 36,
         fontWeight: 'bold',
         color: colors.DarkGray(),
-        fontFamily: 'Roboto_900Black',
+        fontFamily: font.callToAction,
         textAlign: 'center',
         margin: 10,
 
@@ -94,7 +94,7 @@ const styles = {
     subCallToActionText: {
         fontSize: 16,
         color: colors.DarkGray(),
-        fontFamily: 'Roboto_400Regular',
+        fontFamily: font.regular,
         textAlign: 'center',
         margin: 5
     }
@@ -112,7 +112,7 @@ const styles = {
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'white',
-        fontFamily: 'RobotoSlab_700Bold',
+        fontFamily: font.button,
         fontSize: 16,
         shadowOpacity: 0
 
@@ -132,10 +132,10 @@ const styles = {
     loginAccountText: {
         textAlign: 'center',
         color: colors.DarkGray(),
-        fontFamily: 'RobotoSlab_700Bold',
+        fontFamily: font.button,
         fontSize: 16,
         shadowOpacity: 0
 
     }
 }
-
+)

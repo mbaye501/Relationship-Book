@@ -1,12 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { globalStyles } from "../../Styles"
+import { BackgroundFrame } from '../../Components'
 
 function LoginScreen() {
     return (
-        <View style={globalStyles.container}>
+        <BackgroundFrame >
             <Text>Login Screen</Text>
-        </View>
+        </BackgroundFrame>
     );
 }
 

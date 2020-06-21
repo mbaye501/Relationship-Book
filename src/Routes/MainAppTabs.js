@@ -23,8 +23,8 @@ function MainAppTabs({ navigation, route }) {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: colors.DarkBlue,
-                inactiveTintColor: colors.DarkGray,
+                activeTintColor: colors.DarkBlue(),
+                inactiveTintColor: colors.DarkGray(),
             }}
         >
             <Tab.Screen name="Home" component={HomeStack} />

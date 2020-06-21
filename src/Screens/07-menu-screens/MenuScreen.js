@@ -1,12 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { globalStyles } from "../../Styles"
+import { BackgroundFrame } from '../../Components'
 
 function MenuScreen() {
     return (
-        <View style={globalStyles.container}>
+        <BackgroundFrame >
             <Text>Menu Screen</Text>
-        </View>
+        </BackgroundFrame>
     );
 }
 

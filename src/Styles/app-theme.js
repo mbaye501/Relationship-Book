@@ -1,7 +1,4 @@
 import { StyleSheet } from "react-native";
-import React from "react";
-
-
 
 const colors = {
   DarkBlue: (opacity = 1) => `rgba(111, 132, 250, ${opacity})`,
@@ -24,9 +21,46 @@ const globalStyles = StyleSheet.create({
   },
 });
 
+const font = {
+  header: 'DancingScript_700Bold',
+  callToAction: 'Roboto_900Black',
+  regular: 'Roboto_400Regular',
+  subTitle: 'RobotoSlab_600SemiBold',
+  button: 'RobotoSlab_700Bold'
+
+}
+
+//#region component styling
+const authStackHeader = {
+  title: 'My Relationship Book',
+  headerStyle: {
+    backgroundColor: colors.HeaderBackground,
+  },
+  headerTintColor: colors.DarkGray(),
+  headerTitleStyle: {
+    fontFamily: font.header,
+    fontSize: 30
+  },
+  headerTitleAlign: 'center',
+}
+
+const TabsHeader = {
+  headerStyle: {
+    backgroundColor: colors.HeaderBackground,
+  },
+  headerTintColor: colors.DarkGray(),
+  headerTitleStyle: {
+    fontFamily: font.header,
+    fontSize: 30
+  },
+  headerTitleAlign: 'center',
+}
+//#endregion
 
 
-
-
-
-export { globalStyles, colors };
+export {
+  // base theme elements bulding blocks
+  colors, font, globalStyles,
+  // header and tabs styling
+  authStackHeader, TabsHeader
+};

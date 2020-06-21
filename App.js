@@ -7,6 +7,7 @@ import { useFonts, Merienda_400Regular, Merienda_700Bold } from '@expo-google-fo
 import { Roboto_100Thin, Roboto_400Regular, Roboto_500Medium, Roboto_900Black } from '@expo-google-fonts/roboto';
 import { DancingScript_700Bold } from '@expo-google-fonts/dancing-script';
 import { RobotoSlab_500Medium, RobotoSlab_600SemiBold, RobotoSlab_700Bold } from '@expo-google-fonts/roboto-slab';
+import { colors } from './src/Styles'
 
 
 
@@ -28,6 +29,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+const MyTheme = {
+  dark: false,
+  colors: {
+    text: colors.DarkGray(),
+  },
+};
 let isSignedIn = false
 
 

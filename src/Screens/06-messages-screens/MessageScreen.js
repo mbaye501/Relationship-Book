@@ -1,12 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { globalStyles } from "../../Styles"
+import { BackgroundFrame } from '../../Components'
+
 
 function MessageScreen() {
     return (
-        <View style={globalStyles.container}>
+        <BackgroundFrame>
             <Text>Nessage Screen</Text>
-        </View>
+        </BackgroundFrame>
     );
 }
 

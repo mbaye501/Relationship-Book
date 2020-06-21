@@ -1,2 +1,4 @@
-export { colors, globalStyles, BackgroundGradient } from "./app-theme";
-export { authStackHeader } from "./header-styles"
+export {
+    colors, globalStyles, BackgroundGradient, font,
+    authStackHeader, TabsHeader
+} from "./app-theme";

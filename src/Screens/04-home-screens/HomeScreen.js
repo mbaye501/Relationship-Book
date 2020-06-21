@@ -3,6 +3,7 @@ import { Button, Text, View } from "react-native";
 import { globalStyles } from "../../Styles"
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { BackgroundFrame } from '../../Components'
 
 
 function HomeScreen({ navigation }) {
@@ -11,10 +12,10 @@ function HomeScreen({ navigation }) {
     const handleClick = () => navigation.navigate('Entry')
     //#endregion
     return (
-        <View style={globalStyles.container}>
+        <BackgroundFrame>
             <Text>Home Screen</Text>
             <Button title="Go to Details" onPress={handleClick} />
-        </View>
+        </BackgroundFrame>
     );
 }
 

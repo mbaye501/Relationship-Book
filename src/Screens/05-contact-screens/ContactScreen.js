@@ -1,12 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { globalStyles } from "../../Styles"
+import { BackgroundFrame } from '../../Components'
+
 
 function ContactScreen() {
     return (
-        <View style={globalStyles.container}>
+        <BackgroundFrame>
             <Text>Contact Screen</Text>
-        </View>
+        </BackgroundFrame>
     );
 }
 

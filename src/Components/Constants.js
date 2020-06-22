@@ -2,9 +2,9 @@ import React from "react";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { View, Platform, TextInput } from "react-native";
+import { View, Platform, TextInput, TouchableOpacity, Text } from "react-native";
 import { Card } from 'react-native-elements';
-import { colors, font } from '../Styles'
+import { colors, font, globalStyles } from '../Styles'
 
 const HStackStyle = {
     flexDirection: 'row',
@@ -66,7 +66,13 @@ const MyTextInput = ({ style, onChangeText, value, placeholderTextColor, placeho
     />
 )
 
-
+const MyButton = ({ onPress, text }) => (
+    <TouchableOpacity onPress={onPress} style={globalStyles.smallButton}>
+        <Text style={globalStyles.smallButtonText} >
+            {text}
+        </Text>
+    </TouchableOpacity>
+)
 
 
 
@@ -106,7 +112,7 @@ const BackgroundFrame = ({ children }) => (<LinearGradient
     {children}
 </LinearGradient>)
 
-const HStack = ({ children, style, space = 1 }) => (<View style={{ ...style, ...HStackStyle }}>
+const HStack = ({ children, style, space = 1 }) => (<View style={{ ...HStackStyle, ...style }}>
     {children}
 </View>)
 
@@ -116,5 +122,5 @@ const VStack = ({ children, style }) => (<View style={{ ...style, ...VStackStyle
 
 const Spacer = ({ space = 1 }) => (<View style={{ flex: space }}></View>)
 
-export { Incon, BackgroundFrame, MyCard, MyTextInput, Spacer, HStack, VStack };
+export { Incon, BackgroundFrame, MyCard, MyTextInput, MyButton, Spacer, HStack, VStack };
 

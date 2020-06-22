@@ -9,6 +9,15 @@ const colors = {
   White: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   HeaderBackground: `rgba(221, 229, 255, ${Platform.OS === 'ios' ? 1 : 1})`,
 }
+const font = {
+  header: 'DancingScript_700Bold',
+  callToAction: 'Roboto_900Black',
+  regular: 'Roboto_400Regular',
+  subTitle: 'RobotoSlab_600SemiBold',
+  button: 'RobotoSlab_700Bold'
+
+}
+
 
 const globalStyles = StyleSheet.create({
   container: {
@@ -19,17 +28,25 @@ const globalStyles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: 'white'
+  },
+  smallButton: {
+    backgroundColor: colors.DarkBlue(),
+    borderRadius: 10,
+    padding: 5,
+    width: 80,
+    margin: 20
+  },
+  smallButtonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: font.callToAction,
+    fontWeight: 'bold',
+    fontSize: 20
   }
+
+
 });
 
-const font = {
-  header: 'DancingScript_700Bold',
-  callToAction: 'Roboto_900Black',
-  regular: 'Roboto_400Regular',
-  subTitle: 'RobotoSlab_600SemiBold',
-  button: 'RobotoSlab_700Bold'
-
-}
 
 //#region component styling
 const authStackHeader = {
@@ -40,7 +57,7 @@ const authStackHeader = {
   headerTintColor: colors.DarkGray(),
   headerTitleStyle: {
     fontFamily: font.header,
-    fontSize: 30
+    fontSize: 26
   },
   headerTitleAlign: 'center',
 }

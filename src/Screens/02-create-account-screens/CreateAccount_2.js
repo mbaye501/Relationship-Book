@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Text, View, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity } from "react-native";
 import { SocialIcon, Card } from 'react-native-elements'
 import { globalStyles, colors, font } from "../../Styles"
-import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyButton } from '../../Components'
+import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput } from '../../Components'
 
-function CreatAccountScreen({ navigation }) {
+function CreatAccountScreen2() {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
@@ -19,33 +19,13 @@ function CreatAccountScreen({ navigation }) {
             <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} keyboardVerticalOffset={30} style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-                        {/* Top text view */}
-                        <View style={styles.topContainer} >
-                            <Text style={styles.signUpText} >Sign up with</Text>
-                            {/*Social Icons View*/}
-                            <View style={styles.icons}>
-                                <SocialIcon raised={true} type='facebook' />
-                                <SocialIcon raised={true} type='instagram' />
-                                <SocialIcon raised={true} type='linkedin' />
-                                <SocialIcon raised={true} type='twitter' />
-                                <SocialIcon raised={true} type='google' />
-                            </View>
-                            {/* Texts  */}
-                            <Text style={{ ...styles.regularText, marginBottom: 10 }}> Or</Text>
-                            {/* email & password card */}
-                        </View>
-
                         <MyCard title={'Create Account'} space={1} containerStyle={{ minHeight: 300, maxHeight: 300 }}>
                             <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' />
                             <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' />
                             <MyTextInput value={confirmPassword} onChangeText={text => setConfirmPassword(text)} placeholder='Confirm Password' />
                         </MyCard>
-                        <HStack>
-                            <Spacer />
-                            <MyButton onPress={() => navigation.navigate('CreateAccountScreen2')} text='Next' />
 
-                        </HStack>
-                        <Spacer space={20} />
+
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
@@ -90,4 +70,4 @@ styles = StyleSheet.create({
 
 })
 
-export { CreatAccountScreen }
+export { CreatAccountScreen2 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View, Platform } from "react-native";
 import { globalStyles, colors, font } from "../../Styles"
 import { BackgroundFrame, MyCard, Spacer } from '../../Components'
 import { Avatar, Card } from 'react-native-elements';
@@ -33,10 +33,9 @@ function EntryScreen({ navigation }) {
                 <Text style={styles.subCallToActionText}>
                     your relationships with your loved ones
                 </Text>
-
             </View>
-
-            <MyCard flex={2} >
+            <Spacer space={1} />
+            <MyCard space={2} >
                 <TouchableOpacity style={styles.createAccountButton} onPress={handleCreateAccount}>
                     <Text style={styles.createAccountText} >
                         Create Account
@@ -62,19 +61,10 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         textAlign: 'center',
-        marginBottom: 20,
         flex: 1
 
     },
-    buttonsContainer: {
-        borderColor: 'red',
-        borderWidth: 1,
-        flex: 3,
-        alignItems: 'stretch',
-        borderRadius: 20,
-        justifyContent: 'space-around',
-        shadowOpacity: 0.9,
-    },
+
 
     avatar: {
         backgroundColor: 'white',
@@ -100,11 +90,13 @@ const styles = StyleSheet.create({
     }
     ,
     createAccountButton: {
-        height: 65,
+        maxHeight: 65,
+        minHeight: 60,
         borderRadius: 33,
         justifyContent: 'center',
         backgroundColor: colors.DarkBlue(),
         shadowOpacity: 0,
+        elevation: 10
 
     },
 
@@ -119,12 +111,12 @@ const styles = StyleSheet.create({
     },
 
     loginAccountButton: {
-        height: 65,
-        borderRadius: 33,
+        maxHeight: 65,
+        minHeight: 60, borderRadius: 33,
         justifyContent: 'center',
         borderColor: colors.DarkBlue(),
         borderWidth: 1,
-        shadowOpacity: 0
+        shadowOpacity: 0,
 
 
     },

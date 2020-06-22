@@ -2,8 +2,9 @@ import React from "react";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { View, Platform } from "react-native";
+import { View, Platform, TextInput } from "react-native";
 import { Card } from 'react-native-elements';
+import { colors, font } from '../Styles'
 
 const HStackStyle = {
     flexDirection: 'row',
@@ -17,30 +18,57 @@ const VStackStyle = {
     alignItems: 'stretch',
 }
 
-const MyCard = ({ children, containerStyle, wrapperStyle, backgroundColor = Platform.OS === 'ios' ? 'transparent' : 'white' }) => (<Card
+const MyCard = ({ children, title, space, containerStyle, wrapperStyle, backgroundColor = Platform.OS === 'ios' ? colors.MediumBleu(0.) : colors.lightGray() }) => (<Card
     containerStyle={
         {
-            ...containerStyle,
-            height: 300,
+            flex: space,
             borderRadius: 30,
-            backgroundColor: Platform.OS === 'ios' ? 'transparent' : 'white',
+            backgroundColor: backgroundColor,
             justifyContent: 'center',
             alignItems: 'stretch',
-            elevation: 1,
+            elevation: 2,
             marginBottom: 50,
-            shadowOpacity: 0.3
+            shadowOpacity: 0.5,
+            shadowRadius: 1,
+            ...containerStyle,
+
         }
     }
     wrapperStyle={
         {
-            ...wrapperStyle,
             flex: 1,
             justifyContent: 'space-around',
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            ...wrapperStyle,
+
         }
-    }>
+    }
+    title={title}>
     {children}
 </Card>)
+
+
+const MyTextInput = ({ style, onChangeText, value, placeholderTextColor, placeholder }) => (
+    <TextInput
+        style={{
+            backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
+            borderRadius: 15,
+            padding: 10,
+            paddingLeft: 20,
+            elevation: 1,
+            fontFamily: font.regular,
+            ...style
+        }}
+        onChangeText={onChangeText}
+        value={value}
+        placeholderTextColor={colors.MediumGray()}
+        placeholder={placeholder}
+    />
+)
+
+
+
+
 
 function Incon({ iconName, size, color, focused }) {
     switch (iconName) {
@@ -88,5 +116,5 @@ const VStack = ({ children, style }) => (<View style={{ ...style, ...VStackStyle
 
 const Spacer = ({ space = 1 }) => (<View style={{ flex: space }}></View>)
 
-export { Incon, BackgroundFrame, MyCard, Spacer, HStack, VStack };
+export { Incon, BackgroundFrame, MyCard, MyTextInput, Spacer, HStack, VStack };
 

@@ -44,8 +44,6 @@ function EntryScreen({ navigation }) {
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </BackgroundFrame>
-
-
     );
 }
 

@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity } from "react-native";
-import { SocialIcon, Card } from 'react-native-elements'
-import { globalStyles, colors, font } from "../../Styles"
-import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyButton } from '../../Components'
+import React from "react";
+import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
+import { SocialIcon } from 'react-native-elements'
+import { colors, font } from "../../Styles"
+import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from '../../Components'
 
 function LoginScreen({ navigation }) {
+    //#region state variables
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [confirmPassword, setConfirmPassword] = React.useState('');
-
-
+    //#endregion
 
     return (
-
-
-
         <BackgroundFrame >
             <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} keyboardVerticalOffset={30} style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-                        {/* Top text view */}
+
+                        {/* Top Signin Icons and text container */}
                         <View style={styles.topContainer} >
                             <Text style={styles.signUpText} >Sign in with</Text>
                             {/*Social Icons View*/}
@@ -35,24 +32,26 @@ function LoginScreen({ navigation }) {
                             {/* email & password card */}
                         </View>
 
+                        {/* Log in form */}
                         <MyCard space={1} containerStyle={{ minHeight: 150, maxHeight: 200 }}>
                             <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' />
                             <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' />
                         </MyCard>
+
+                        {/* Submit login button */}
                         <HStack>
                             <Spacer />
                             <MyButton onPress={() => navigation.navigate('MainAppTabs')} text='Login' />
 
                         </HStack>
-                        <Spacer space={20} />
+
+                        {/* Spacer */}
+                        <Spacer space={1} />
+
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
-
-
         </BackgroundFrame>
-
-
     );
 }
 

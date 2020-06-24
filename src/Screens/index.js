@@ -1,6 +1,6 @@
 export { EntryScreen } from "./01-entry-screens/EntryScreen";
-export { CreatAccountScreen } from "./02-create-account-screens/CreateAccount";
-export { CreatAccountScreen2 } from "./02-create-account-screens/CreateAccount_2";
+export { CreateAccountScreen } from "./02-create-account-screens/CreateAccount";
+export { CreateAccountScreen2 } from "./02-create-account-screens/CreateAccount_2";
 
 export { LoginScreen } from "./03-login-screens/LoginScreen"
 export { HomeScreen } from "./04-home-screens/HomeScreen"

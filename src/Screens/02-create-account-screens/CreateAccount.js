@@ -1,24 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity } from "react-native";
-import { SocialIcon, Card } from 'react-native-elements'
-import { globalStyles, colors, font } from "../../Styles"
-import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyButton } from '../../Components'
+import React from "react";
+import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity } from "react-native";
+import { SocialIcon } from 'react-native-elements'
+import { colors, font } from "../../Styles"
+import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from '../../Components'
 
-function CreatAccountScreen({ navigation }) {
-
-    //#region constant definitions
+function CreateAccountScreen({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
-    //#endregion
 
     return (
         <BackgroundFrame >
             <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} keyboardVerticalOffset={30} style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
                     <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-
-                        {/* Top text and social Icons container */}
+                        {/* Top text view */}
                         <View style={styles.topContainer} >
                             <Text style={styles.signUpText} >Sign up with</Text>
                             {/*Social Icons View*/}
@@ -33,29 +29,21 @@ function CreatAccountScreen({ navigation }) {
                             <Text style={{ ...styles.regularText, marginBottom: 10 }}> Or</Text>
                             {/* email & password card */}
                         </View>
-
-                        {/* Create account Forms*/}
                         <MyCard title={'Create Account'} space={1} containerStyle={{ minHeight: 300, maxHeight: 300 }}>
-                            <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' />
-                            <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' />
-                            <MyTextInput value={confirmPassword} onChangeText={text => setConfirmPassword(text)} placeholder='Confirm Password' />
+                            <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' autoCompleteType={'email'} autoCapitalize={'none'} />
+                            <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' autoCompleteType={'password'} secureTextEntry={true} />
+                            <MyTextInput value={confirmPassword} onChangeText={text => setConfirmPassword(text)} placeholder='Confirm Password' autoCompleteType={'password'} secureTextEntry={true} />
                         </MyCard>
-
-                        {/* Next Button*/}
                         <HStack>
                             <Spacer />
                             <MyButton onPress={() => navigation.navigate('CreateAccountScreen2')} text='Next' />
+
                         </HStack>
-
-                        {/* Spacer to make sure content is at top */}
                         <Spacer space={20} />
-
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </BackgroundFrame>
-
-
     );
 }
 
@@ -92,4 +80,4 @@ styles = StyleSheet.create({
 
 })
 
-export { CreatAccountScreen }
+export { CreateAccountScreen }

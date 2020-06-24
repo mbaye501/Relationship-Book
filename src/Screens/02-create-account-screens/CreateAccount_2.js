@@ -6,7 +6,7 @@ import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyText, M
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import RNPickerSelect from 'react-native-picker-select';
 
-function CreatAccountScreen2({ navigation }) {
+function CreateAccountScreen2({ navigation }) {
     //#region State variables
     const [firstName, setfirstName] = useState('')
     const [lastName, setlastName] = useState('')
@@ -134,4 +134,4 @@ styles = StyleSheet.create({
 
 })
 
-export { CreatAccountScreen2 }
+export { CreateAccountScreen2 }

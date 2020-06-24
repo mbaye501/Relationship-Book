@@ -34,8 +34,8 @@ function LoginScreen({ navigation }) {
 
                         {/* Log in form */}
                         <MyCard space={1} containerStyle={{ minHeight: 150, maxHeight: 200 }}>
-                            <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' />
-                            <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' />
+                            <MyTextInput value={email} onChangeText={text => setEmail(text)} placeholder='Please Enter Email' autoCompleteType={'email'} autoCapitalize={'none'} />
+                            <MyTextInput value={password} onChangeText={text => setPassword(text)} placeholder='Please Enter Password' secureTextEntry={true} />
                         </MyCard>
 
                         {/* Submit login button */}

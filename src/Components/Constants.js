@@ -18,7 +18,7 @@ const VStackStyle = {
     alignItems: 'stretch',
 }
 
-const MyCard = ({ children, title, space, containerStyle, wrapperStyle, backgroundColor = Platform.OS === 'ios' ? colors.MediumBleu(0.) : colors.lightGray() }) => (<Card
+const MyCard = ({ children, title, space, containerStyle, titleStyle, wrapperStyle, backgroundColor = Platform.OS === 'ios' ? colors.MediumBleu(0.) : colors.lightGray() }) => (<Card
     containerStyle={
         {
             flex: space,
@@ -43,36 +43,53 @@ const MyCard = ({ children, title, space, containerStyle, wrapperStyle, backgrou
 
         }
     }
-    title={title}>
+    title={title}
+    titleStyle={
+        {
+            color: colors.DarkGray(),
+            ...titleStyle
+        }
+    }
+>
     {children}
 </Card>)
 
-
-const MyTextInput = ({ style, onChangeText, value, placeholderTextColor, placeholder }) => (
+const MyTextInput = ({ style, onChangeText, value, placeholder, editable, autoCompleteType, secureTextEntry, autoCorrect, autoCapitalize }) => (
     <TextInput
         style={{
-            backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
-            borderRadius: 15,
-            padding: 10,
-            paddingLeft: 20,
-            elevation: 1,
-            fontFamily: font.regular,
+            ...globalStyles.MyText
+            ,
             ...style
         }}
         onChangeText={onChangeText}
         value={value}
         placeholderTextColor={colors.MediumGray()}
         placeholder={placeholder}
+        editable={editable}
+        autoCompleteType={autoCompleteType}
+        secureTextEntry={secureTextEntry}
+        autoCorrect={autoCorrect}
+        autoCapitalize={autoCapitalize}
     />
 )
 
-const MyButton = ({ onPress, text }) => (
-    <TouchableOpacity onPress={onPress} style={globalStyles.smallButton}>
-        <Text style={globalStyles.smallButtonText} >
-            {text}
-        </Text>
-    </TouchableOpacity>
+const MyText = ({ children }) => (
+    <Text style={{
+        backgroundColor: 'transparent',
+        padding: 10,
+        paddingLeft: 20,
+        elevation: 1,
+        fontFamily: font.regular,
+    }}>
+        {children}
+    </Text>
 )
+
+const MyButton = ({ onPress, text }) => (<TouchableOpacity onPress={onPress} style={globalStyles.smallButton}>
+    <Text style={globalStyles.smallButtonText} >
+        {text}
+    </Text>
+</TouchableOpacity>)
 
 
 
@@ -122,5 +139,5 @@ const VStack = ({ children, style }) => (<View style={{ ...style, ...VStackStyle
 
 const Spacer = ({ space = 1 }) => (<View style={{ flex: space }}></View>)
 
-export { Incon, BackgroundFrame, MyCard, MyTextInput, MyButton, Spacer, HStack, VStack };
+export { Incon, BackgroundFrame, MyCard, MyTextInput, MyButton, Spacer, HStack, VStack, MyText };
 

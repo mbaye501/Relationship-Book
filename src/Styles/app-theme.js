@@ -42,11 +42,41 @@ const globalStyles = StyleSheet.create({
     fontFamily: font.callToAction,
     fontWeight: 'bold',
     fontSize: 20
-  }
+  },
 
-
+  MyText: {
+    backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
+    borderRadius: 15,
+    padding: 10,
+    paddingLeft: 20,
+    elevation: 1,
+    fontFamily: font.regular,
+    color: colors.DarkGray()
+  },
 });
 
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
+    borderRadius: 15,
+    padding: 10,
+    paddingLeft: 20,
+    elevation: 1,
+    fontFamily: font.regular,
+    color: colors.DarkGray(),
+  },
+  inputAndroid: {
+    backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
+    borderTopLeftRadius: 15, borderTopRightRadius: 15,
+    borderBottomLeftRadius: 15, borderBottomRightRadius: 15,
+    padding: 10,
+    paddingLeft: 20,
+    elevation: 1,
+    fontFamily: font.regular,
+    color: colors.DarkGray(),
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+});
 
 //#region component styling
 const authStackHeader = {
@@ -78,7 +108,7 @@ const TabsHeader = {
 
 export {
   // base theme elements bulding blocks
-  colors, font, globalStyles,
+  colors, font, globalStyles, pickerSelectStyles,
   // header and tabs styling
   authStackHeader, TabsHeader
 };

@@ -1,4 +1,4 @@
 export {
-    colors, globalStyles, BackgroundGradient, font,
+    colors, globalStyles, BackgroundGradient, font, pickerSelectStyles,
     authStackHeader, TabsHeader
 } from "./app-theme";

@@ -10,7 +10,7 @@ function HomeScreen({ navigation }) {
     const [relationship, setRelationship] = useState('')
     const [relationshipType, setRelationshipType] = useState('')
     const [book, bookType] = useState('')
-    //#endregion
+    //#endregion  
 
     //#region const variables
     const relationshipPlaceholder = {
@@ -71,9 +71,6 @@ function HomeScreen({ navigation }) {
     //#endregion
 
     return (
-
-
-
         <BackgroundFrame >
             <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} keyboardVerticalOffset={30} style={{ flex: 1, justifyContent: 'flex-end' }}>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
@@ -117,19 +114,19 @@ function HomeScreen({ navigation }) {
 
 
                         </MyCard>
+
                         <HStack>
                             <Spacer />
-                            <MyButton onPress={() => navigation.navigate('CreateAccountScreen2')} text='Next' />
+                            <MyButton onPress={() => navigation.navigate('Home2')} text='Next' />
 
                         </HStack>
+
                         <Spacer space={20} />
 
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
         </BackgroundFrame>
-
-
     );
 }
 

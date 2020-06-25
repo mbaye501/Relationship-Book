@@ -43,7 +43,6 @@ const globalStyles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20
   },
-
   MyText: {
     backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
     borderRadius: 15,
@@ -53,6 +52,23 @@ const globalStyles = StyleSheet.create({
     fontFamily: font.regular,
     color: colors.DarkGray()
   },
+  message: {
+    fontFamily: font.header,
+    textAlign: 'center',
+    color: colors.DarkBlue(),
+    fontSize: 40,
+    fontWeight: '900'
+  },
+  messageInput: {
+    backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
+    borderRadius: 30,
+    padding: 10,
+    textAlign: 'center',
+    elevation: 1,
+    fontFamily: font.header,
+    color: colors.DarkGray(),
+    fontSize: 30
+  }
 });
 
 const pickerSelectStyles = StyleSheet.create({

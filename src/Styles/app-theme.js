@@ -68,7 +68,18 @@ const globalStyles = StyleSheet.create({
     fontFamily: font.header,
     color: colors.DarkGray(),
     fontSize: 30
-  }
+  },
+  listItem: {
+    backgroundColor: colors.MediumBleu(),
+    elevation: 1,
+
+  },
+  avatarContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 20,
+    flex: 2
+  },
 });
 
 const pickerSelectStyles = StyleSheet.create({

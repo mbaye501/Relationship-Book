@@ -14,7 +14,7 @@ function EntryScreen({ navigation }) {
     return (
         <BackgroundFrame>
 
-            <View style={styles.avatarContainer}>
+            <View style={globalStyles.avatarContainer}>
                 <Avatar containerStyle={styles.avatar}
                     rounded
                     size={200}

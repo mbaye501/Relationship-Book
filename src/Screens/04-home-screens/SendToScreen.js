@@ -1,13 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity } from "react-native";
-import { SocialIcon, Card } from 'react-native-elements'
+import { Text, View, StyleSheet, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity, FlatList, ScrollView } from "react-native";
+import { SocialIcon, Card, Button, } from 'react-native-elements'
 import { globalStyles, colors, font, pickerSelectStyles } from "../../Styles"
 import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyButton } from '../../Components'
-import RNPickerSelect from 'react-native-picker-select';
 
 function SendToScreen({ navigation }) {
     //#region state variables
-    const [text, setText] = useState('')
+    const [data, setData] = useState([{ key: String(1) }])
+    React.useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Button
+                    icon={{
+                        name: "add",
+                        color: colors.DarkBlue()
+                    }}
+                    type='clear'
+                    onPress={() => {
+                        if (data.length < 50) {
+                            setData([...data, { key: String(data.length + 1) }])
+                            console.log(data)
+                        }
+                        else {
+                            alert('hey')
+                        }
+
+                    }}
+
+                />
+            ),
+        });
+    }, [navigation, data]);
+
+
+
+
     //#endregion  
 
     //#region const variables
@@ -23,23 +50,31 @@ function SendToScreen({ navigation }) {
 
                         <Spacer />
 
-                        <MyCard space={1} containerStyle={{ minHeight: 200 }}>
+                        <MyCard containerStyle={{ minHeight: 100 + data.length * 80, maxHeight: 500 }} title={"Send To"}>
+                            <View style={{ flex: 1, alignContent: 'space-around' }}>
+                                <FlatList
+                                    data={data}
+                                    renderItem={(item) => <MyTextInput placeholder='Send to' style={{ minHeight: 40, marginBottom: 10 }} />}
+                                />
 
-                            <MyTextInput value={text} onChangeText={text => setText(text)} placeholder='send to' />
 
-
+                            </View>
                         </MyCard>
+                        <Spacer space={15} />
 
-                        <Spacer />
+                        <HStack>
+                            <Spacer />
+                            <MyButton onPress={() => navigation.push('Home')} text='Send' />
+                        </HStack>
+                        <Spacer space={15} />
                     </View>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
-        </BackgroundFrame>
+        </BackgroundFrame >
     );
 }
 
 styles = StyleSheet.create({
-
     signUpText: {
         color: colors.DarkGray(),
         fontFamily: font.subTitle,

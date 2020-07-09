@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { AntDesign } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -54,36 +54,40 @@ const MyCard = ({ children, title, space, containerStyle, titleStyle, wrapperSty
     {children}
 </Card>)
 
-const MyTextInput = ({ style, onChangeText, value, placeholder, editable, autoCompleteType, secureTextEntry, autoCorrect, autoCapitalize }) => (
-    <TextInput
-        style={{
-            ...globalStyles.MyText
-            ,
-            ...style
-        }}
-        onChangeText={onChangeText}
-        value={value}
-        placeholderTextColor={colors.MediumGray()}
-        placeholder={placeholder}
-        editable={editable}
-        autoCompleteType={autoCompleteType}
-        secureTextEntry={secureTextEntry}
-        autoCorrect={autoCorrect}
-        autoCapitalize={autoCapitalize}
-    />
-)
+function MyTextInput({ style, onChangeText, placeholder, editable, autoCompleteType, secureTextEntry, autoCorrect, autoCapitalize }) {
+    const [text, setText] = useState('')
 
-const MyText = ({ children }) => (
-    <Text style={{
+
+    return (
+        <TextInput
+            style={{
+                ...globalStyles.MyText
+                ,
+                ...style
+            }}
+            onChangeText={text => setText(text)}
+            value={text}
+            placeholderTextColor={colors.MediumGray()}
+            placeholder={placeholder}
+            editable={editable}
+            autoCompleteType={autoCompleteType}
+            secureTextEntry={secureTextEntry}
+            autoCorrect={autoCorrect}
+            autoCapitalize={autoCapitalize}
+        />
+    )
+}
+
+const MyText = ({ children }) => (<Text
+    style={{
         backgroundColor: 'transparent',
         padding: 10,
         paddingLeft: 20,
         elevation: 1,
         fontFamily: font.regular,
     }}>
-        {children}
-    </Text>
-)
+    {children}
+</Text>)
 
 const MyButton = ({ onPress, text }) => (<TouchableOpacity onPress={onPress} style={globalStyles.smallButton}>
     <Text style={globalStyles.smallButtonText} >
@@ -91,7 +95,11 @@ const MyButton = ({ onPress, text }) => (<TouchableOpacity onPress={onPress} sty
     </Text>
 </TouchableOpacity>)
 
-
+const HeaderPlusButton = ({ onPress, text }) => (<TouchableOpacity onPress={onPress} style={globalStyles.smallButton}>
+    <Text style={globalStyles.smallButtonText} >
+        {text}
+    </Text>
+</TouchableOpacity>)
 
 function Incon({ iconName, size, color, focused }) {
     switch (iconName) {

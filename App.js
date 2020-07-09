@@ -35,7 +35,7 @@ const MyTheme = {
     text: colors.DarkGray(),
   },
 };
-let isSignedIn = false
+let isSignedIn = true
 
 
 function App() {

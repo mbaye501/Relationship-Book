@@ -32,7 +32,6 @@ function MessageScreen({ navigation }) {
             subtitle: 'Yeterday 6:00pm'
         }
     ]
-
     const keyExtractor = (item, index) => index.toString()
 
     const renderItem = ({ item }) => (
@@ -49,25 +48,19 @@ function MessageScreen({ navigation }) {
 
     return (
         <BackgroundFrame>
-            <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"} keyboardVerticalOffset={30} style={{ flex: 1, justifyContent: 'flex-end' }}>
-                <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-                    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
 
-                        <Spacer />
+            <Spacer />
 
-                        <MyCard containerStyle={{ minHeight: 80 }} >
-                            <MyTextInput placeholder='Search Message' style={{ minHeight: 40, flex: 1 }} />
-                        </MyCard>
-                        <FlatList
-                            keyExtractor={keyExtractor}
-                            data={list}
-                            renderItem={renderItem}
-                        />
+            <MyCard containerStyle={{ minHeight: 80 }} >
+                <MyTextInput placeholder='Search Message' style={{ minHeight: 40, flex: 1 }} />
+            </MyCard>
+            <FlatList
+                keyExtractor={keyExtractor}
+                data={list}
+                renderItem={renderItem}
+            />
 
-                        <Spacer space={120} />
-                    </View>
-                </TouchableWithoutFeedback>
-            </KeyboardAvoidingView>
+            <Spacer space={120} />
 
         </BackgroundFrame>
     );

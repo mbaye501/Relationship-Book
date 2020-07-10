@@ -1,16 +1,8 @@
-//#region import react standard libs
 import React from "react";
-//#endregion
-
-//#region import my modules
 import { colors } from '../Styles'
 import { Incon } from '../Components'
 import { ContactsStack, HomeStack, MessagesStack, MenuStack } from './Tabs'
-//#endregion
-
-//#region import Navigations libs
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//#endregion
 
 const Tab = createBottomTabNavigator();
 
@@ -32,9 +24,7 @@ function MainAppTabs({ navigation, route }) {
             <Tab.Screen name="Contacts" component={ContactsStack} />
             <Tab.Screen name="Menu" component={MenuStack} />
 
-        </Tab.Navigator>
-
-    );
+        </Tab.Navigator>);
 }
 
 export { MainAppTabs }

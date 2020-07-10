@@ -14,5 +14,4 @@ function ContactsStack({ navigation }) {
         </Stack.Navigator>
     );
 }
-
 export { ContactsStack }

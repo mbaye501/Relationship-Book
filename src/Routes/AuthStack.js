@@ -14,7 +14,6 @@ function AuthStack() {
             <Stack.Screen name="CreateAccountScreen2" component={CreateAccountScreen2} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="MainAppTabs" component={MainAppTabs} />
-
         </Stack.Navigator>
     );
 }

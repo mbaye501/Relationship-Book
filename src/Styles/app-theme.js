@@ -9,6 +9,7 @@ const colors = {
   White: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   HeaderBackground: `rgba(221, 229, 255, ${Platform.OS === 'ios' ? 1 : 1})`,
 }
+
 const font = {
   header: 'DancingScript_700Bold',
   callToAction: 'Roboto_900Black',
@@ -17,7 +18,6 @@ const font = {
   button: 'RobotoSlab_700Bold'
 
 }
-
 
 const globalStyles = StyleSheet.create({
   container: {
@@ -132,10 +132,12 @@ const TabsHeader = {
 }
 //#endregion
 
-
 export {
   // base theme elements bulding blocks
-  colors, font, globalStyles, pickerSelectStyles,
+  colors,
+  font,
+  globalStyles,
+  pickerSelectStyles,
   // header and tabs styling
   authStackHeader, TabsHeader
 };

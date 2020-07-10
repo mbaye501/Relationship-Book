@@ -29,12 +29,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
-const MyTheme = {
-  dark: false,
-  colors: {
-    text: colors.DarkGray(),
-  },
-};
 let isSignedIn = true
 
 

@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-relationshipbook-dev-232401-authRole",
+            "UnauthRoleArn": "arn:aws:iam::421411877748:role/amplify-relationshipbook-dev-232401-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::421411877748:role/amplify-relationshipbook-dev-232401-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-relationshipbook-dev-232401-deployment",
+            "UnauthRoleName": "amplify-relationshipbook-dev-232401-unauthRole",
+            "StackName": "amplify-relationshipbook-dev-232401",
+            "StackId": "arn:aws:cloudformation:us-east-1:421411877748:stack/amplify-relationshipbook-dev-232401/221b3570-c3ef-11ea-ab41-12eeb59f3ad1",
+            "AmplifyAppId": "d2dsmbf1wffr46"
+        },
+        "categories": {
+            "auth": {
+                "relationshipbook0c02e054": {}
+            }
+        }
+    }
+}

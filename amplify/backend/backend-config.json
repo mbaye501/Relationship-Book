@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"relationshipbook0c02e054": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

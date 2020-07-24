@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { globalStyles, colors, font } from "../../Styles"
 import { BackgroundFrame, MyCard, Spacer } from '../../Components'
-import { Avatar, Card } from 'react-native-elements';
+import { Avatar, Card, Button } from 'react-native-elements';
 
 
 function EntryScreen({ navigation }) {
@@ -37,15 +37,22 @@ function EntryScreen({ navigation }) {
             </View>
 
             <MyCard space={2} >
-                <TouchableOpacity style={styles.createAccountButton} onPress={handleCreateAccount}>
-                    <Text style={styles.createAccountText} >
+                <TouchableOpacity style={globalStyles.createAccountButton} onPress={handleCreateAccount}>
+                    <Text style={globalStyles.createAccountText} >
                         Create Account
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.loginAccountButton} >
-                    <Text style={styles.loginAccountText} onPress={handleLogin}>Login</Text>
+                <TouchableOpacity style={globalStyles.loginAccountButton} >
+                    <Text style={globalStyles.loginAccountText} onPress={handleLogin}>Login</Text>
                 </TouchableOpacity>
+
             </MyCard>
+            <Button
+                title='Verify email'
+                type='clear'
+                style={{ marginBottom: 5 }}
+                onPress={() => { navigation.navigate('CreateAccountScreen3', { email: '' }) }} />
+
 
         </BackgroundFrame >
     );
@@ -97,45 +104,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 5
     }
-    ,
-    createAccountButton: {
-        height: 65,
-        borderRadius: 33,
-        justifyContent: 'center',
-        backgroundColor: colors.DarkBlue(),
-        shadowOpacity: 0,
 
-    },
-
-    createAccountText: {
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'white',
-        fontFamily: font.button,
-        fontSize: 16,
-        shadowOpacity: 0
-
-    },
-
-    loginAccountButton: {
-        height: 65,
-        borderRadius: 33,
-        justifyContent: 'center',
-        borderColor: colors.DarkBlue(),
-        borderWidth: 1,
-        shadowOpacity: 0
-
-
-    },
-
-    loginAccountText: {
-        textAlign: 'center',
-        color: colors.DarkGray(),
-        fontFamily: font.button,
-        fontSize: 16,
-        shadowOpacity: 0
-
-    },
 })
 
 export { EntryScreen }

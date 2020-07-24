@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { CreateAccountScreen, CreateAccountScreen2, EntryScreen, LoginScreen } from '../Screens'
+import { CreateAccountScreen, CreateAccountScreen2, CreateAccountScreen3, EntryScreen, LoginScreen } from '../Screens'
 import { MainAppTabs } from './MainAppTabs'
 import { authStackHeader } from '../Styles'
 
@@ -12,6 +12,7 @@ function AuthStack() {
             <Stack.Screen name="EntryScreen" component={EntryScreen} />
             <Stack.Screen name="CreateAccountScreen" component={CreateAccountScreen} />
             <Stack.Screen name="CreateAccountScreen2" component={CreateAccountScreen2} />
+            <Stack.Screen name="CreateAccountScreen3" component={CreateAccountScreen3} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="MainAppTabs" component={MainAppTabs} />
 

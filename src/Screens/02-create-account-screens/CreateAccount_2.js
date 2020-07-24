@@ -6,6 +6,7 @@ import { BackgroundFrame, MyCard, HStack, VStack, Spacer, MyTextInput, MyText, M
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import RNPickerSelect from "react-native-picker-select";
 import { Auth } from "aws-amplify";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 function CreateAccountScreen2({ navigation, route }) {
   const { email } = route.params;
@@ -45,8 +46,7 @@ function CreateAccountScreen2({ navigation, route }) {
       const month = m.toString().length > 1 ? m : `0${m}`;
       const year = date.getFullYear();
       const dob = `${year}-${month}-${day}`;
-      console.log(dob);
-      const user = await Auth.signUp({
+      const signUpParams = {
         username: email,
         password: password,
         attributes: {
@@ -56,8 +56,12 @@ function CreateAccountScreen2({ navigation, route }) {
           family_name: lastName,
           given_name: firstName,
         },
-      });
+      }
+      console.log(signUpParams)
+      navigation.navigate('CreateAccountScreen3', { email: email })
+      const user = await Auth.signUp(signUpParams);
       console.log({ user, });
+
     } catch (error) {
       console.log("error signing up:", error);
     }
@@ -65,88 +69,78 @@ function CreateAccountScreen2({ navigation, route }) {
 
   return (
     <BackgroundFrame>
-      <KeyboardAvoidingView behavior={Platform.OS == "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={30}
-        style={{ flex: 1, justifyContent: "flex-end" }}
-      >
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={{ flex: 1, justifyContent: "flex-end" }}>
-            {/* Create account Forms */}
-            <MyCard title={"Create Account"} space={1} containerStyle={{
-              minHeight: 300,
-              maxHeight: 400,
-            }} >
-              <MyTextInput value={firstName} onChangeText={(text) => setfirstName(text)} placeholder="First Name" />
-              <MyTextInput value={lastName} onChangeText={(text) => setlastName(text)} placeholder="Last Name" />
-              {/* Gender RN picker */}
-              <RNPickerSelect
-                onValueChange={(value) => console.log(value)}
-                items={[
-                  {
-                    label: "Male",
-                    value: "male",
-                  },
-                  {
-                    label: "Female",
-                    value: "female",
-                  },
-                  {
-                    label: "Other",
-                    value: "other",
-                  },
-                ]}
-                style={{
-                  ...pickerSelectStyles,
-                  placeholder: {
-                    color: colors.MediumGray(),
-                    fontFamily: font.regular,
-                  },
-                }}
-                placeholder={placeholder}
-                useNativeAndroidPickerStyle={false}
-              />
-              {/* Date picker */}
-              <TouchableOpacity
-                onPress={showDatePicker}
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: 15,
-                  elevation: 1,
-                }}
-              >
-                <Text
-                  style={{
-                    padding: 10,
-                    paddingLeft: 20,
-                    elevation: 1,
-                    color: dateOfBirth === "Select Date of Birth" ? colors.MediumGray() : colors.DarkGray(),
-                  }}
-                >
-                  {dateOfBirth.toString()}
-                </Text>
-              </TouchableOpacity>
-            </MyCard>
 
-            {/* Submit button */}
-            <HStack>
-              <Spacer />
-              <MyButton
-                onPress={() => {
-                  signUp();
-                  navigation.navigate("LoginScreen");
-                }}
-                text="Done"
-              />
-            </HStack>
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
+        {/* Create account Forms */}
+        <MyCard title={"Create Account"} space={1} containerStyle={{
+          minHeight: 300,
+          maxHeight: 400,
+        }} >
+          <TextInput value={firstName} onChangeText={(text) => setfirstName(text)} placeholder="First Name" style={globalStyles.MyText} />
+          <TextInput value={lastName} onChangeText={(text) => setlastName(text)} placeholder="Last Name" style={globalStyles.MyText} />
+          {/* Gender RN picker */}
+          <RNPickerSelect
+            onValueChange={(value) => setgender(value)}
+            items={[
+              {
+                label: "Male",
+                value: "male",
+              },
+              {
+                label: "Female",
+                value: "female",
+              }
+            ]}
+            style={{
+              ...pickerSelectStyles,
+              placeholder: {
+                color: colors.MediumGray(0.6),
+                fontFamily: font.regular,
+              },
+            }}
+            placeholder={placeholder}
+            useNativeAndroidPickerStyle={false}
+          />
+          {/* Date picker */}
+          <TouchableOpacity
+            onPress={showDatePicker}
+            style={{
+              backgroundColor: "white",
+              borderRadius: 15,
+              elevation: 1,
+            }}
+          >
+            <Text
+              style={{
+                padding: 10,
+                paddingLeft: 20,
+                elevation: 1,
+                color: dateOfBirth === "Select Date of Birth" ? colors.MediumGray(0.6) : colors.DarkGray(),
+              }}
+            >
+              {dateOfBirth.toString()}
+            </Text>
+          </TouchableOpacity>
+        </MyCard>
 
-            {/* Spacer */}
-            <Spacer />
+        {/* Submit button */}
+        <HStack>
+          <Spacer />
+          <MyButton
+            onPress={() => {
+              signUp();
+              navigation.navigate("CreateAccountScreen3");
+            }}
+            text="Done"
+          />
+        </HStack>
 
-            {/* Datetime picker model not displayed */}
-            <DateTimePickerModal isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker} value={dateOfBirth} />
-          </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+        {/* Spacer */}
+        <Spacer />
+
+        {/* Datetime picker model not displayed */}
+        <DateTimePickerModal isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker} value={dateOfBirth} />
+      </KeyboardAwareScrollView>
     </BackgroundFrame>
   );
 }

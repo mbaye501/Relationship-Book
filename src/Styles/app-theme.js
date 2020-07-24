@@ -80,6 +80,44 @@ const globalStyles = StyleSheet.create({
     margin: 20,
     flex: 2
   },
+  createAccountButton: {
+    height: 65,
+    borderRadius: 33,
+    justifyContent: 'center',
+    backgroundColor: colors.DarkBlue(),
+    shadowOpacity: 0,
+
+  },
+
+  createAccountText: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'white',
+    fontFamily: font.button,
+    fontSize: 16,
+    shadowOpacity: 0
+
+  },
+
+  loginAccountButton: {
+    height: 65,
+    borderRadius: 33,
+    justifyContent: 'center',
+    borderColor: colors.DarkBlue(),
+    borderWidth: 1,
+    shadowOpacity: 0
+
+
+  },
+
+  loginAccountText: {
+    textAlign: 'center',
+    color: colors.DarkGray(),
+    fontFamily: font.button,
+    fontSize: 16,
+    shadowOpacity: 0
+
+  },
 });
 
 const pickerSelectStyles = StyleSheet.create({

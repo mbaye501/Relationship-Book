@@ -4,7 +4,6 @@ import { SocialIcon } from "react-native-elements";
 import { colors, font, globalStyles } from "../../Styles";
 import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from "../../Components";
 import { Formik } from "formik";
-import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 function CreateAccountScreen({ navigation }) {
@@ -33,7 +32,7 @@ function CreateAccountScreen({ navigation }) {
         <Formik
           initialValues={{ email: "", password: "", confirmPassword: "" }}
           onSubmit={(values) => {
-            console.log(values)
+            navigation.navigate('CreateAccountScreen2', values)
           }}
         >
           {(props) => (
@@ -69,9 +68,10 @@ function CreateAccountScreen({ navigation }) {
                   style={globalStyles.MyText}
                 />
               </MyCard>
+
               <HStack style={{ marginBottom: 10, flex: 1 }}>
                 <Spacer />
-                <MyButton onPress={() => { }} text="Next" />
+                <MyButton onPress={props.handleSubmit} text="Next" />
               </HStack>
 
 

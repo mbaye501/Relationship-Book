@@ -1,4 +1,11 @@
 {
     "brace_style": "collapse,preserve-inline",
-    "folding": {}
+    "folding": {},
+    "prettier.printWidth": 1000000,
+    "html.format.wrapLineLength": 0,
+    "prettier.proseWrap": "never",
+    "yaml.format.printWidth": 1000000,
+    "yaml.format.proseWrap": "never",
+    "editor.wordWrapColumn": 100000000,
+    "html.format.wrapAttributes": "preserve-aligned",
 }

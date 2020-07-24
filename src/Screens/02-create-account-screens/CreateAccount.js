@@ -1,53 +1,21 @@
-import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Platform,
-  TouchableOpacity,
-} from "react-native";
+import React, { useState } from "react";
+import { Text, TextInput, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TouchableOpacity, alert } from "react-native";
 import { SocialIcon } from "react-native-elements";
-import { colors, font } from "../../Styles";
-import {
-  BackgroundFrame,
-  MyCard,
-  HStack,
-  Spacer,
-  MyTextInput,
-  MyButton,
-} from "../../Components";
-import { Auth } from "aws-amplify";
+import { colors, font, globalStyles } from "../../Styles";
+import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from "../../Components";
+import { Formik } from "formik";
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 function CreateAccountScreen({ navigation }) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [confirmPassword, setConfirmPassword] = React.useState("");
-
-  async function signUp() {
-    const username = email;
-    const password = password;
-    console.log(email);
-    try {
-      const user = await Auth.signUp({
-        username: username,
-        password: password,
-      });
-      console.log({ user });
-    } catch (error) {
-      console.log("error signing up:", error);
-    }
-  }
-
   return (
     <BackgroundFrame>
+
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         keyboardVerticalOffset={30}
         style={{ flex: 1, justifyContent: "flex-end" }}
       >
+
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
             {/* Top text view */}
@@ -62,48 +30,58 @@ function CreateAccountScreen({ navigation }) {
                 <SocialIcon raised={true} type="google" />
               </View>
               {/* Texts  */}
-              <Text style={{ ...styles.regularText, marginBottom: 10 }}>
-                {" "}
-                Or
-              </Text>
+              <Text style={{ ...styles.regularText, marginBottom: 10 }}> Or </Text>
               {/* email & password card */}
             </View>
-            <MyCard
-              title={"Create Account"}
-              space={1}
-              containerStyle={{ minHeight: 300, maxHeight: 300 }}
+            <Formik
+              initialValues={{ email: "", password: "", confirmPassword: "" }}
+              onSubmit={(values) => {
+                console.log(values)
+              }}
             >
-              <MyTextInput
-                value={email}
-                onChangeText={(text) => {}}
-                placeholder="Please Enter Email"
-                autoCompleteType={"email"}
-                autoCapitalize={"none"}
-              />
-              <MyTextInput
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-                placeholder="Please Enter Password"
-                autoCompleteType={"password"}
-                secureTextEntry={true}
-              />
-              <MyTextInput
-                value={confirmPassword}
-                onChangeText={(text) => setConfirmPassword(text)}
-                placeholder="Confirm Password"
-                autoCompleteType={"password"}
-                secureTextEntry={true}
-              />
-            </MyCard>
-            <HStack>
-              <MyButton onPress={signUp} text="Signup" />
-              <Spacer />
-              <MyButton
-                onPress={() => navigation.navigate("CreateAccountScreen2")}
-                text="Next"
-              />
-            </HStack>
-            <Spacer space={20} />
+              {(props) => (
+                <View style={{ flex: 1 }}>
+                  <MyCard
+                    title={"Create Account"}
+                    space={1}
+                    containerStyle={{ minHeight: 300, maxHeight: 300 }}
+                  >
+                    <TextInput
+                      value={props.values.email}
+                      onChangeText={props.handleChange("email")}
+                      placeholder="Please Enter Email"
+                      autoCompleteType={"email"}
+                      autoCapitalize={"none"}
+                      style={globalStyles.MyText}
+                    />
+
+                    <TextInput
+                      value={props.values.password}
+                      onChangeText={props.handleChange("password")}
+                      placeholder="Please Enter Password"
+                      autoCompleteType={"password"}
+                      secureTextEntry={true}
+                      style={globalStyles.MyText}
+                    />
+
+                    <TextInput
+                      value={props.values.confirmPassword}
+                      onChangeText={props.handleChange("confirmPassword")}
+                      placeholder="Confirm Password"
+                      autoCompleteType={"password"}
+                      secureTextEntry={true}
+                      style={globalStyles.MyText}
+                    />
+                  </MyCard>
+                  <HStack>
+                    <Spacer />
+                    <MyButton onPress={() => { console.log('hey') }} text="Next" />
+                  </HStack>
+
+
+                </View>
+              )}
+            </Formik>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

@@ -5,86 +5,82 @@ import { colors, font, globalStyles } from "../../Styles";
 import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from "../../Components";
 import { Formik } from "formik";
 import KeyboardSpacer from 'react-native-keyboard-spacer';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 function CreateAccountScreen({ navigation }) {
   return (
     <BackgroundFrame>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS == "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={30}
-        style={{ flex: 1, justifyContent: "flex-end" }}
-      >
-
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={{ flex: 1, justifyContent: "flex-end" }}>
-            {/* Top text view */}
-            <View style={styles.topContainer}>
-              <Text style={styles.signUpText}>Sign up with</Text>
-              {/*Social Icons View*/}
-              <View style={styles.icons}>
-                <SocialIcon raised={true} type="facebook" />
-                <SocialIcon raised={true} type="instagram" />
-                <SocialIcon raised={true} type="linkedin" />
-                <SocialIcon raised={true} type="twitter" />
-                <SocialIcon raised={true} type="google" />
-              </View>
-              {/* Texts  */}
-              <Text style={{ ...styles.regularText, marginBottom: 10 }}> Or </Text>
-              {/* email & password card */}
-            </View>
-            <Formik
-              initialValues={{ email: "", password: "", confirmPassword: "" }}
-              onSubmit={(values) => {
-                console.log(values)
-              }}
-            >
-              {(props) => (
-                <View style={{ flex: 1 }}>
-                  <MyCard
-                    title={"Create Account"}
-                    space={1}
-                    containerStyle={{ minHeight: 300, maxHeight: 300 }}
-                  >
-                    <TextInput
-                      value={props.values.email}
-                      onChangeText={props.handleChange("email")}
-                      placeholder="Please Enter Email"
-                      autoCompleteType={"email"}
-                      autoCapitalize={"none"}
-                      style={globalStyles.MyText}
-                    />
-
-                    <TextInput
-                      value={props.values.password}
-                      onChangeText={props.handleChange("password")}
-                      placeholder="Please Enter Password"
-                      autoCompleteType={"password"}
-                      secureTextEntry={true}
-                      style={globalStyles.MyText}
-                    />
-
-                    <TextInput
-                      value={props.values.confirmPassword}
-                      onChangeText={props.handleChange("confirmPassword")}
-                      placeholder="Confirm Password"
-                      autoCompleteType={"password"}
-                      secureTextEntry={true}
-                      style={globalStyles.MyText}
-                    />
-                  </MyCard>
-                  <HStack>
-                    <Spacer />
-                    <MyButton onPress={() => { console.log('hey') }} text="Next" />
-                  </HStack>
 
 
-                </View>
-              )}
-            </Formik>
+
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
+        {/* Top text view */}
+        <View style={styles.topContainer}>
+          <Text style={styles.signUpText}>Sign up with</Text>
+          {/*Social Icons View*/}
+          <View style={styles.icons}>
+            <SocialIcon raised={true} type="facebook" />
+            <SocialIcon raised={true} type="instagram" />
+            <SocialIcon raised={true} type="linkedin" />
+            <SocialIcon raised={true} type="twitter" />
+            <SocialIcon raised={true} type="google" />
           </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+          {/* Texts  */}
+          <Text style={{ ...styles.regularText, marginBottom: 0 }}> Or </Text>
+          {/* email & password card */}
+        </View>
+        <Formik
+          initialValues={{ email: "", password: "", confirmPassword: "" }}
+          onSubmit={(values) => {
+            console.log(values)
+          }}
+        >
+          {(props) => (
+            <View style={{ flex: 1 }}>
+              <MyCard
+                title={"Create Account"}
+                containerStyle={{ minHeight: 300, maxHeight: 300 }}
+              >
+                <TextInput
+                  value={props.values.email}
+                  onChangeText={props.handleChange("email")}
+                  placeholder="Please Enter Email"
+                  autoCompleteType={"email"}
+                  autoCapitalize={"none"}
+                  style={globalStyles.MyText}
+                />
+
+                <TextInput
+                  value={props.values.password}
+                  onChangeText={props.handleChange("password")}
+                  placeholder="Please Enter Password"
+                  autoCompleteType={"password"}
+                  secureTextEntry={true}
+                  style={globalStyles.MyText}
+                />
+
+                <TextInput
+                  value={props.values.confirmPassword}
+                  onChangeText={props.handleChange("confirmPassword")}
+                  placeholder="Confirm Password"
+                  autoCompleteType={"password"}
+                  secureTextEntry={true}
+                  style={globalStyles.MyText}
+                />
+              </MyCard>
+              <HStack style={{ marginBottom: 10, flex: 1 }}>
+                <Spacer />
+                <MyButton onPress={() => { }} text="Next" />
+              </HStack>
+
+
+            </View>
+          )}
+        </Formik>
+
+      </KeyboardAwareScrollView>
+
     </BackgroundFrame>
   );
 }
@@ -112,7 +108,7 @@ styles = StyleSheet.create({
   },
 
   topContainer: {
-    paddingTop: 20,
+    marginTop: 20,
   },
 });
 

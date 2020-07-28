@@ -73,8 +73,8 @@ function CreateAccountScreen2({ navigation, route }) {
       <KeyboardAwareScrollView style={{ flex: 1 }}>
         {/* Create account Forms */}
         <MyCard title={"Create Account"} space={1} containerStyle={{
-          minHeight: 300,
-          maxHeight: 400,
+          minHeight: 400,
+          maxHeight: 500,
         }} >
           <TextInput value={firstName} onChangeText={(text) => setfirstName(text)} placeholder="First Name" style={globalStyles.MyText} />
           <TextInput value={lastName} onChangeText={(text) => setlastName(text)} placeholder="Last Name" style={globalStyles.MyText} />
@@ -108,14 +108,17 @@ function CreateAccountScreen2({ navigation, route }) {
               backgroundColor: "white",
               borderRadius: 15,
               elevation: 1,
+              height: 50
+
             }}
           >
             <Text
               style={{
-                padding: 10,
+                padding: 15,
                 paddingLeft: 20,
                 elevation: 1,
                 color: dateOfBirth === "Select Date of Birth" ? colors.MediumGray(0.6) : colors.DarkGray(),
+                textAlignVertical: 'center'
               }}
             >
               {dateOfBirth.toString()}

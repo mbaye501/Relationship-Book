@@ -34,7 +34,8 @@ const globalStyles = StyleSheet.create({
     borderRadius: 10,
     padding: 5,
     width: 80,
-    margin: 20
+    margin: 20,
+
   },
   smallButtonText: {
     color: 'white',
@@ -50,7 +51,8 @@ const globalStyles = StyleSheet.create({
     paddingLeft: 20,
     elevation: 1,
     fontFamily: font.regular,
-    color: colors.DarkGray()
+    color: colors.DarkGray(),
+    height: 50
   },
   message: {
     fontFamily: font.header,
@@ -110,6 +112,10 @@ const globalStyles = StyleSheet.create({
 
   },
 
+  inputErrorwrapper: {
+    margin: 5
+  },
+
   loginAccountText: {
     textAlign: 'center',
     color: colors.DarkGray(),
@@ -118,6 +124,13 @@ const globalStyles = StyleSheet.create({
     shadowOpacity: 0
 
   },
+
+  textInputError: {
+    color: 'crimson',
+    paddingLeft: 20,
+    fontSize: 12
+
+  }
 });
 
 const pickerSelectStyles = StyleSheet.create({
@@ -129,6 +142,7 @@ const pickerSelectStyles = StyleSheet.create({
     elevation: 1,
     fontFamily: font.regular,
     color: colors.DarkGray(),
+    height: 50
   },
   inputAndroid: {
     backgroundColor: Platform.OS === 'ios' ? 'white' : 'white',
@@ -139,7 +153,8 @@ const pickerSelectStyles = StyleSheet.create({
     elevation: 1,
     fontFamily: font.regular,
     color: colors.DarkGray(),
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30, // to ensure the text is never behind the icon,
+    height: 50
   },
 });
 

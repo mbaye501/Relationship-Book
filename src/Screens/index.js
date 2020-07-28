@@ -4,6 +4,9 @@ export { CreateAccountScreen2 } from "./02-create-account-screens/CreateAccount_
 export { CreateAccountScreen3 } from "./02-create-account-screens/CreateAccount_3";
 
 export { LoginScreen } from "./03-login-screens/LoginScreen"
+export { ForgotPasswordScreen } from "./03-login-screens/ForgotPasswordScreen"
+export { ForgotPasswordScreen2 } from "./03-login-screens/ForgotPasswordScreen2"
+
 export { HomeScreen } from "./04-home-screens/HomeScreen"
 export { HomeScreen2 } from "./04-home-screens/HomeScreen2"
 export { SendToScreen } from "./04-home-screens/SendToScreen"

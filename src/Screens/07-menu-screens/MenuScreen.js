@@ -1,26 +1,29 @@
 import React, { useEffect } from "react";
 import { Text, View, FlatList, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, } from "react-native"
-import { BackgroundFrame, Spacer, MyCard, MyTextInput } from '../../Components'
+import { BackgroundFrame, Spacer, MyCard, MyTextInput, AuthContext } from '../../Components'
 import { List, ListItem, Button } from 'react-native-elements'
 import { colors, font, globalStyles } from '../../Styles'
 
 
 function MenuScreen({ navigation }) {
+    const { signOut } = React.useContext(AuthContext);
+
 
     const list = [
         {
             name: 'Edit Profile ',
             icon: 'person-outline',
-            nav: 'Profile'
+            press: navigation.navigate('Profile')
         },
         {
             name: 'Security',
             icon: 'security',
-            nav: 'Security'
+            press: navigation.navigate('Security')
         },
         {
             name: 'Log Out',
             icon: 'arrow-back',
+            press: signOut
         }
     ]
 
@@ -33,7 +36,7 @@ function MenuScreen({ navigation }) {
             containerStyle={globalStyles.listItem}
             bottomDivider
             chevron={{ color: colors.DarkGray() }}
-            onPress={() => navigation.navigate(item.nav)}
+            onPress={signOut}
         />
     )
 

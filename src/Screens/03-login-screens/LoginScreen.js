@@ -2,11 +2,11 @@ import React from "react";
 import { Text, View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, TextInput, Alert } from "react-native";
 import { SocialIcon } from 'react-native-elements'
 import { colors, font, globalStyles } from "../../Styles"
-import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton } from '../../Components'
+import { BackgroundFrame, MyCard, HStack, Spacer, MyTextInput, MyButton, AuthContext } from '../../Components'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Formik } from "formik";
 import * as yup from 'yup'
-import { Auth } from "aws-amplify";
+
 
 const validationSchema = yup.object({
 
@@ -24,19 +24,19 @@ const validationSchema = yup.object({
 })
 
 function LoginScreen({ navigation }) {
-    //#region state variables
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
-    //#endregion
 
-    async function signIn({ email, password }) {
-        try {
-            const user = await Auth.signIn(email, password)
-            console.log(user.signInUserSession.accessToken.jwtToken)
-        } catch (error) {
-            Alert.alert(error.message)
-        }
-    }
+    const { signIn } = React.useContext(AuthContext);
+
+
+    // async function signIn({ email, password }) {
+    //     try {
+    //         const user = await Auth.signIn(email, password)
+    //         console.log(user.signInUserSession.accessToken.jwtToken)
+    //     } catch (error) {
+    //         Alert.alert(error.message)
+    //     }
+
+    // }
 
     return (
         <BackgroundFrame >
